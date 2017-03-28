@@ -12,21 +12,12 @@
 		<div class="col-md-3">
 			<div class="actions">
 				<div class="panel panel-default">
-					<div class="panel-heading"><?php echo __('Actions'); ?></div>
+					<div class="panel-heading"><?php echo __('Ações'); ?></div>
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-									<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;Edit Usuario'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete Usuario'), array('action' => 'delete', $usuario['Usuario']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $usuario['Usuario']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Usuarios'), array('action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Usuario'), array('action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Acessorios'), array('controller' => 'acessorios', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Acessorio'), array('controller' => 'acessorios', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Pesquisas'), array('controller' => 'pesquisas', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Pesquisa'), array('controller' => 'pesquisas', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Usuario Avaliacaos'), array('controller' => 'usuario_avaliacaos', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Usuario Avaliacao'), array('controller' => 'usuario_avaliacaos', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;List Usuario Enderecos'), array('controller' => 'usuario_enderecos', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp&nbsp;New Usuario Endereco'), array('controller' => 'usuario_enderecos', 'action' => 'add'), array('escape' => false)); ?> </li>
+									<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;Listar Usuários'), array('action' => 'index'), array('escape' => false)); ?> </li>
+									<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;Editar Usuário'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
+									<li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Excluir Usuário'), array('action' => 'delete', $usuario['Usuario']['id']), array('escape' => false), __('Você realmente deseja excluir: %s?', $usuario['Usuario']['nome'])); ?> </li>
 							</ul>
 						</div><!-- end body -->
 				</div><!-- end panel -->
@@ -34,132 +25,26 @@
 		</div><!-- end col md 3 -->
 
 		<div class="col-md-9">			
-			<table cellpadding="0" cellspacing="0" class="table table-striped">
-				<tbody>
-				<tr>
-		<th><?php echo __('Id'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['id']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Nome'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['nome']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Email'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['email']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Senha'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['senha']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Ativo'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['ativo']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Bloqueado'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['bloqueado']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Data Nascimento'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['data_nascimento']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Telefone1'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['telefone1']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Telefone2'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['telefone2']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Foto'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['foto']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Cpf'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['cpf']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Num Carteira Motorista'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['num_carteira_motorista']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Marca Veiculo'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['marca_veiculo']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Placa Veiculo'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['placa_veiculo']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Cor Veiculo'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['cor_veiculo']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Modelo Veiculo'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['modelo_veiculo']); ?>
-			&nbsp;
-		</td>
-</tr>
-<tr>
-		<th><?php echo __('Data Inclusao Registro'); ?></th>
-		<td>
-			<?php echo h($usuario['Usuario']['data_inclusao_registro']); ?>
-			&nbsp;
-		</td>
-</tr>
-				</tbody>
-			</table>
+			<?php echo '<b>Nome:</b> ' . $usuario['Usuario']['nome']; ?><br><br>
+			<?php echo '<b>Email:</b> ' . $usuario['Usuario']['email']; ?><br><br>
+			<?php echo '<b>Data Nascimento:</b> ' . date("d/m/Y", strtotime(h($usuario['Usuario']['data_nascimento']))); ?><br><br>
+			<?php echo '<b>Telefone1:</b> ' . $usuario['Usuario']['telefone1']; ?><br><br>
+			<?php echo '<b>Telefone2:</b> ' . $usuario['Usuario']['telefone2']; ?><br><br>
+			<?php echo '<b>CPF:</b> ' . $usuario['Usuario']['cpf']; ?><br><br>
+
+			<?php if($usuario['Usuario']['motorista'] == 1) { ?>
+
+				<?php echo '<b>Número Carteira Motorista:</b> ' . $usuario['Usuario']['num_carteira_motorista']; ?><br><br>
+				<?php echo '<b>Marca Veículo:</b> ' . $usuario['Usuario']['marca_veiculo']; ?><br><br>
+				<?php echo '<b>Placa Veículo:</b> ' . $usuario['Usuario']['placa_veiculo']; ?><br><br>
+				<?php echo '<b>Cor Veículo:</b> ' . $usuario['Usuario']['cor_veiculo']; ?><br><br>
+				<?php echo '<b>Modelo Veículo:</b> ' . $usuario['Usuario']['modelo_veiculo']; ?><br><br>
+
+			<?php } ?>
+
+			<?php echo '<b>Data de Inclusão do Registro:</b> ' . date("d/m/Y", strtotime(h($usuario['Usuario']['data_inclusao_registro'])));; ?>
 
 		</div><!-- end col md 9 -->
-
 	</div>
 </div>
 

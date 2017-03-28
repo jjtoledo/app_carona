@@ -18,7 +18,7 @@
 								<li class="active"><a href="#"><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;Relatórios</a></li>
 								<li><?php echo $this->Html->link('<span class="fa fa-car"></span>&nbsp;&nbsp;'.__('Caronas'), array('controller' => 'caronas', 'action' => 'index'), array('escape' => false)); ?></li>
 								<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;'.__('Usuários'), array('controller' => 'usuarios', 'action' => 'index'), array('escape' => false)); ?></li>
-								<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-star-empty"></span>&nbsp;&nbsp;'.__('Avaliações'), array('controller' => 'avaliacaos', 'action' => 'index'), array('escape' => false)); ?></li>
+								<!--<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-star-empty"></span>&nbsp;&nbsp;'.__('Avaliações'), array('controller' => 'avaliacaos', 'action' => 'index'), array('escape' => false)); ?></li>-->
 								<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-barcode"></span>&nbsp;&nbsp;'.__('Gerar boletos'), array('action' => 'gera_boleto'), array('escape' => false)); ?></li>
 							</ul>
 						</div><!-- end body -->
