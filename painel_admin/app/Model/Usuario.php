@@ -56,9 +56,22 @@ class Usuario extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'UsuarioAvaliacao' => array(
-			'className' => 'UsuarioAvaliacao',
+		'AvaliacaoRecebida' => array(
+			'className' => 'Avaliacao',
 			'foreignKey' => 'usuario_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'AvaliacaoRealizada' => array(
+			'className' => 'Avaliacao',
+			'foreignKey' => 'avaliador_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

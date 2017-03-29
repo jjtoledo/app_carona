@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header">
-				<h1><?php echo __('Usuario'); ?></h1>
+				<h1><?php echo __('Usuário'); ?></h1>
 			</div>
 		</div>
 	</div>
@@ -81,31 +81,25 @@
 <div class="related row">
 	<div class="col-md-12">
 		<h3><?php echo __('Avaliações Realizadas'); ?></h3>
-		<?php if (!empty($usuario['UsuarioAvaliacao'])):
 
-			$existe = false;
+		<?php if (!empty($usuario['AvaliacaoRealizada'])) {
 
 			if($this->Session->check('Admin')) {
 
-				foreach ($usuario['UsuarioAvaliacao'] as $c): 
-
-					if($c['flag_avaliado'] == 0) { ?>
+				foreach ($usuario['AvaliacaoRealizada'] as $c): ?>
 
 						<div class="jumbotron jumb">
-							<?php echo $usuario['Usuario']['nome'] . ' escreveu:' ?> <br /> <?php echo 'Nota: <b>' . $c['Avaliacao']['nota'] . '</b><br />'; 
-										echo '<h4>' . $c['Avaliacao']['comentario'] . '</h4>' ?>
+							<?php echo 'Eu escrevi para ' . $c['UsuarioAvaliado']['nome'] . ': '; ?> <br /> <?php echo 'Nota: <b>' . $c['nota'] . '</b><br />'; 
+										echo '<h4>' . $c['comentario'] . '</h4>' ?>
 					  </div>
 
-					<?php $existe = true; }  
-
-				endforeach; 
-
-				if ($existe == false) {
-					echo '<h4>Nenhuma avaliação realizada até o momento!</h4>'; 
-				}
-
+				<?php endforeach; 
 			} 
-		endif; ?>
+
+		} else { 
+			echo '<h4>Nenhuma avaliação realizada até o momento!</h4>'; 
+		} ?>
+
 	</div><!-- end col md 12 -->
 </div>
 
@@ -113,65 +107,24 @@
 	<div class="col-md-12">
 		<h3><?php echo __('Avaliações Recebidas'); ?></h3>
 
-		<?php if (!empty($usuario['UsuarioAvaliacao'])):
-
-			$existe = false;
+		<?php if (!empty($usuario['AvaliacaoRecebida'])) {
 
 			if($this->Session->check('Admin')) {
 
-				foreach ($usuario['UsuarioAvaliacao'] as $c): 
-
-					if($c['flag_avaliado'] == 1) { ?>
+				foreach ($usuario['AvaliacaoRecebida'] as $c): ?>
 
 						<div class="jumbotron jumb">
-							<?php echo $usuario['Usuario']['nome'] . ' escreveu:' ?> <br /> <?php echo 'Nota: <b>' . $c['Avaliacao']['nota'] . '</b><br />'; 
-										echo '<h4>' . $c['Avaliacao']['comentario'] . '</h4>' ?>
+							<?php echo $c['UsuarioAvaliador']['nome'] . ' escreveu para mim:' ?> <br /> <?php echo 'Nota: <b>' . $c['nota'] . '</b><br />'; 
+										echo '<h4>' . $c['comentario'] . '</h4>' ?>
 					  </div>
 
-					<?php $existe = true; }  
-
-				endforeach; 
-
-				if ($existe == false) {
-					echo '<h5>Nenhuma avaliação realizada até o momento!</h5>'; 
-				}
-
+				<?php endforeach; 
 			} 
-		endif; ?>
+
+		} else { 
+			echo '<h4>Nenhuma avaliação recebida até o momento!</h4>'; 
+		} ?>
+
 	</div><!-- end col md 12 -->
 </div>
 
-
-<div class="related row">
-	<div class="col-md-12">
-	<h3><?php echo __('Related Usuario Enderecos'); ?></h3>
-	<?php if (!empty($usuario['UsuarioEndereco'])): ?>
-	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
-	<thead>
-	<tr>
-		<th><?php echo __('Usuario Id'); ?></th>
-		<th><?php echo __('Endereco Id'); ?></th>
-		<th class="actions"></th>
-	</tr>
-	<thead>
-	<tbody>
-	<?php foreach ($usuario['UsuarioEndereco'] as $usuarioEndereco): ?>
-		<tr>
-			<td><?php echo $usuarioEndereco['usuario_id']; ?></td>
-			<td><?php echo $usuarioEndereco['endereco_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'usuario_enderecos', 'action' => 'view', $usuarioEndereco['usuario_id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'usuario_enderecos', 'action' => 'edit', $usuarioEndereco['usuario_id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'usuario_enderecos', 'action' => 'delete', $usuarioEndereco['usuario_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $usuarioEndereco['usuario_id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</tbody>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Usuario Endereco'), array('controller' => 'usuario_enderecos', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
-	</div>
-	</div><!-- end col md 12 -->
-</div>

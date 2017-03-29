@@ -41,8 +41,11 @@ class UsuariosController extends AppController {
 
 		$options = array(
 			'contain' => array(
-				'UsuarioAvaliacao' => array(
-					'Avaliacao'
+				'AvaliacaoRealizada'=> array(
+					'UsuarioAvaliado'
+				),
+				'AvaliacaoRecebida' => array(
+					'UsuarioAvaliador'
 				),
 				'Endereco' => array(
 					'Cidade' => array(
