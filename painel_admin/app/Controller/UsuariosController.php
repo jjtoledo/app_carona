@@ -38,7 +38,23 @@ class UsuariosController extends AppController {
 		if (!$this->Usuario->exists($id)) {
 			throw new NotFoundException(__('Invalid usuario'));
 		}
-		$options = array('conditions' => array('Usuario.' . $this->Usuario->primaryKey => $id));
+
+		$options = array(
+			'contain' => array(
+				'UsuarioAvaliacao' => array(
+					'Avaliacao'
+				),
+				'Endereco' => array(
+					'Cidade' => array(
+						'Estado' => array(
+							'Pais'
+						)
+					)
+				)
+			),
+			'conditions' => array('Usuario.' . $this->Usuario->primaryKey => $id)
+		);
+
 		$this->set('usuario', $this->Usuario->find('first', $options));
 	}
 

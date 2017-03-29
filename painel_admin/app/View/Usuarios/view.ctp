@@ -27,10 +27,12 @@
 		<div class="col-md-9">			
 			<?php echo '<b>Nome:</b> ' . $usuario['Usuario']['nome']; ?><br><br>
 			<?php echo '<b>Email:</b> ' . $usuario['Usuario']['email']; ?><br><br>
+			<?php echo '<b>CPF:</b> ' . $usuario['Usuario']['cpf']; ?><br><br>
 			<?php echo '<b>Data Nascimento:</b> ' . date("d/m/Y", strtotime(h($usuario['Usuario']['data_nascimento']))); ?><br><br>
 			<?php echo '<b>Telefone1:</b> ' . $usuario['Usuario']['telefone1']; ?><br><br>
 			<?php echo '<b>Telefone2:</b> ' . $usuario['Usuario']['telefone2']; ?><br><br>
-			<?php echo '<b>CPF:</b> ' . $usuario['Usuario']['cpf']; ?><br><br>
+
+			<?php echo '<b>Endereço:</b> ' . $usuario['Endereco']['rua'] . ', ' . $usuario['Endereco']['numero'] . ', ' . $usuario['Endereco']['bairro'] . ', ' . $usuario['Endereco']['complemento'] . ' - ' . $usuario['Endereco']['cep'] . ', ' . $usuario['Endereco']['Cidade']['nome'] . ', ' . $usuario['Endereco']['Cidade']['Estado']['nome'] . ', ' . $usuario['Endereco']['Cidade']['Estado']['Pais']['nome'] . '<br><br>'; ?>
 
 			<?php if($usuario['Usuario']['motorista'] == 1) { ?>
 
@@ -50,107 +52,96 @@
 
 <div class="related row">
 	<div class="col-md-12">
-	<h3><?php echo __('Related Acessorios'); ?></h3>
-	<?php if (!empty($usuario['Acessorio'])): ?>
-	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
-	<thead>
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Nome'); ?></th>
-		<th><?php echo __('Usuario Id'); ?></th>
-		<th class="actions"></th>
-	</tr>
-	<thead>
-	<tbody>
-	<?php foreach ($usuario['Acessorio'] as $acessorio): ?>
-		<tr>
-			<td><?php echo $acessorio['id']; ?></td>
-			<td><?php echo $acessorio['nome']; ?></td>
-			<td><?php echo $acessorio['usuario_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'acessorios', 'action' => 'view', $acessorio['id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'acessorios', 'action' => 'edit', $acessorio['id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'acessorios', 'action' => 'delete', $acessorio['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $acessorio['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</tbody>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Acessorio'), array('controller' => 'acessorios', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
-	</div>
+		<h3><?php echo __('Acessórios'); ?></h3>
+		<?php if (!empty($usuario['Acessorio'])): ?>
+			<table cellpadding = "0" cellspacing = "0" class="table table-striped">
+				<thead>
+					<tr>
+						<th><?php echo __('Nome'); ?></th>
+						<th class="actions"></th>
+					</tr>
+				<thead>
+				<tbody>
+					<?php foreach ($usuario['Acessorio'] as $acessorio): ?>
+						<tr>
+							<td><?php echo $acessorio['nome']; ?></td>
+							<td class="actions">
+								<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'acessorios', 'action' => 'view', $acessorio['id']), array('escape' => false)); ?>
+								<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'acessorios', 'action' => 'edit', $acessorio['id']), array('escape' => false)); ?>
+								<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'acessorios', 'action' => 'delete', $acessorio['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $acessorio['id'])); ?>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
 	</div><!-- end col md 12 -->
 </div>
+
 <div class="related row">
 	<div class="col-md-12">
-	<h3><?php echo __('Related Pesquisas'); ?></h3>
-	<?php if (!empty($usuario['Pesquisa'])): ?>
-	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
-	<thead>
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Usuario Id'); ?></th>
-		<th class="actions"></th>
-	</tr>
-	<thead>
-	<tbody>
-	<?php foreach ($usuario['Pesquisa'] as $pesquisa): ?>
-		<tr>
-			<td><?php echo $pesquisa['id']; ?></td>
-			<td><?php echo $pesquisa['usuario_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'pesquisas', 'action' => 'view', $pesquisa['id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'pesquisas', 'action' => 'edit', $pesquisa['id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'pesquisas', 'action' => 'delete', $pesquisa['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $pesquisa['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</tbody>
-	</table>
-<?php endif; ?>
+		<h3><?php echo __('Avaliações Realizadas'); ?></h3>
+		<?php if (!empty($usuario['UsuarioAvaliacao'])):
 
-	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Pesquisa'), array('controller' => 'pesquisas', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
-	</div>
+			$existe = false;
+
+			if($this->Session->check('Admin')) {
+
+				foreach ($usuario['UsuarioAvaliacao'] as $c): 
+
+					if($c['flag_avaliado'] == 0) { ?>
+
+						<div class="jumbotron jumb">
+							<?php echo $usuario['Usuario']['nome'] . ' escreveu:' ?> <br /> <?php echo 'Nota: <b>' . $c['Avaliacao']['nota'] . '</b><br />'; 
+										echo '<h4>' . $c['Avaliacao']['comentario'] . '</h4>' ?>
+					  </div>
+
+					<?php $existe = true; }  
+
+				endforeach; 
+
+				if ($existe == false) {
+					echo '<h4>Nenhuma avaliação realizada até o momento!</h4>'; 
+				}
+
+			} 
+		endif; ?>
 	</div><!-- end col md 12 -->
 </div>
+
 <div class="related row">
 	<div class="col-md-12">
-	<h3><?php echo __('Related Usuario Avaliacaos'); ?></h3>
-	<?php if (!empty($usuario['UsuarioAvaliacao'])): ?>
-	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
-	<thead>
-	<tr>
-		<th><?php echo __('Usuario Id'); ?></th>
-		<th><?php echo __('Avaliacao Id'); ?></th>
-		<th><?php echo __('Flag Avaliado'); ?></th>
-		<th class="actions"></th>
-	</tr>
-	<thead>
-	<tbody>
-	<?php foreach ($usuario['UsuarioAvaliacao'] as $usuarioAvaliacao): ?>
-		<tr>
-			<td><?php echo $usuarioAvaliacao['usuario_id']; ?></td>
-			<td><?php echo $usuarioAvaliacao['avaliacao_id']; ?></td>
-			<td><?php echo $usuarioAvaliacao['flag_avaliado']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'usuario_avaliacaos', 'action' => 'view', $usuarioAvaliacao['usuario_id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'usuario_avaliacaos', 'action' => 'edit', $usuarioAvaliacao['usuario_id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'usuario_avaliacaos', 'action' => 'delete', $usuarioAvaliacao['usuario_id']), array('escape' => false), __('Are you sure you want to delete # %s?', $usuarioAvaliacao['usuario_id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</tbody>
-	</table>
-<?php endif; ?>
+		<h3><?php echo __('Avaliações Recebidas'); ?></h3>
 
-	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Usuario Avaliacao'), array('controller' => 'usuario_avaliacaos', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
-	</div>
+		<?php if (!empty($usuario['UsuarioAvaliacao'])):
+
+			$existe = false;
+
+			if($this->Session->check('Admin')) {
+
+				foreach ($usuario['UsuarioAvaliacao'] as $c): 
+
+					if($c['flag_avaliado'] == 1) { ?>
+
+						<div class="jumbotron jumb">
+							<?php echo $usuario['Usuario']['nome'] . ' escreveu:' ?> <br /> <?php echo 'Nota: <b>' . $c['Avaliacao']['nota'] . '</b><br />'; 
+										echo '<h4>' . $c['Avaliacao']['comentario'] . '</h4>' ?>
+					  </div>
+
+					<?php $existe = true; }  
+
+				endforeach; 
+
+				if ($existe == false) {
+					echo '<h5>Nenhuma avaliação realizada até o momento!</h5>'; 
+				}
+
+			} 
+		endif; ?>
 	</div><!-- end col md 12 -->
 </div>
+
+
 <div class="related row">
 	<div class="col-md-12">
 	<h3><?php echo __('Related Usuario Enderecos'); ?></h3>

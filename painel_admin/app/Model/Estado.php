@@ -17,9 +17,9 @@ class Estado extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Paiss' => array(
-			'className' => 'Paiss',
-			'foreignKey' => 'paiss_id',
+		'Pais' => array(
+			'className' => 'Pais',
+			'foreignKey' => 'pais_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

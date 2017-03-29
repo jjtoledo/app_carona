@@ -18,6 +18,17 @@ class Usuario extends AppModel {
  *
  * @var array
  */
+
+	public $belongsTo = array(
+		'Endereco' => array(
+			'className' => 'Endereco',
+			'foreignKey' => 'endereco_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+
 	public $hasMany = array(
 		'Acessorio' => array(
 			'className' => 'Acessorio',
@@ -47,19 +58,6 @@ class Usuario extends AppModel {
 		),
 		'UsuarioAvaliacao' => array(
 			'className' => 'UsuarioAvaliacao',
-			'foreignKey' => 'usuario_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-		'UsuarioEndereco' => array(
-			'className' => 'UsuarioEndereco',
 			'foreignKey' => 'usuario_id',
 			'dependent' => false,
 			'conditions' => '',

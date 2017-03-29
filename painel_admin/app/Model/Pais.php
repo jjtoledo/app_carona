@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * Paiss Model
  *
  */
-class Paiss extends AppModel {
+class Pais extends AppModel {
 
 /**
  * Use table
