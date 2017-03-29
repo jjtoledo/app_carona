@@ -37,6 +37,8 @@
 							<th nowrap><?php echo $this->Paginator->sort('email'); ?></th>
 							<th nowrap><?php echo $this->Paginator->sort('telefone1'); ?></th>
 							<th nowrap><?php echo $this->Paginator->sort('telefone2'); ?></th>
+							<th nowrap><?php echo $this->Paginator->sort('ativo'); ?></th>
+							<th nowrap><?php echo $this->Paginator->sort('bloqueado'); ?></th>
 							<th class="actions"></th>
 						</tr>
 					</thead>
@@ -47,10 +49,31 @@
 							<td nowrap><?php echo h($usuario['Usuario']['email']); ?>&nbsp;</td>
 							<td nowrap><?php echo h($usuario['Usuario']['telefone1']); ?>&nbsp;</td>
 							<td nowrap><?php echo h($usuario['Usuario']['telefone2']); ?>&nbsp;</td>
+							<td nowrap><?php if($usuario['Usuario']['ativo'] == 1){
+												echo '<span class="fa fa-check"></span>';
+											 } else {
+											 	echo '<span class="fa fa-close"></span>';
+											 } ?>&nbsp;</td>
+							<td nowrap><?php if($usuario['Usuario']['bloqueado'] == 0) {
+												echo 'Não';
+											 } else {
+											 	echo 'Sim';
+											 } ?>&nbsp;</td>
 							<td class="actions">
-								<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $usuario['Usuario']['id']), array('escape' => false)); ?>
-								<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?>
-								<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $usuario['Usuario']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $usuario['Usuario']['id'])); ?>
+								<?php echo $this->Html->link('<span class="fa fa-search"></span>', array('action' => 'view', $usuario['Usuario']['id']), array('escape' => false)); ?>
+								<?php echo $this->Html->link('<span class="fa fa-pencil"></span>', array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?>
+
+								<?php if($usuario['Usuario']['ativo'] == 1) { 
+										echo $this->Form->postLink('<span class="fa fa-remove"></span>', array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Tem certeza que deseja desativar o usuário: %s?', $usuario['Usuario']['nome'])); 
+									  } else {
+									  	echo $this->Form->postLink('<span class="fa fa-check"></span>', array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Tem certeza que deseja ativar o usuário: %s?', $usuario['Usuario']['nome'])); 
+									  } ?>
+
+								<?php if($usuario['Usuario']['bloqueado'] == 0) { 
+										echo $this->Form->postLink('<span class="fa fa-lock"></span>', array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Tem certeza que deseja bloquear o usuário: %s?', $usuario['Usuario']['nome'])); 
+									  } else {
+									  	echo $this->Form->postLink('<span class="fa fa-unlock"></span>', array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Tem certeza que deseja desbloquear o usuário: %s?', $usuario['Usuario']['nome']));
+									  } ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>

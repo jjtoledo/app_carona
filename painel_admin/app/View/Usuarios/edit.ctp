@@ -1,33 +1,30 @@
 <div class="usuarios form">
 
+	<script type="text/javascript">
+		
+		jQuery(function($){	
+		  $("#data_nasc").mask("99/99/9999",{autoclear: false}); 
+		});
+	
+	</script>
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header">
-				<h1><?php echo __('Edit Usuario'); ?></h1>
+				<h1><?php echo __('Editar Usuário'); ?></h1>
 			</div>
 		</div>
 	</div>
-
-
 
 	<div class="row">
 		<div class="col-md-3">
 			<div class="actions">
 				<div class="panel panel-default">
-					<div class="panel-heading"><?php echo __('Actions'); ?></div>
+					<div class="panel-heading"><?php echo __('Ações'); ?></div>
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-
-																<li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;'.__('Delete'), array('action' => 'delete', $this->Form->value('Usuario.id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Usuario.id'))); ?></li>
-																<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;'.__('List Usuarios'), array('action' => 'index'), array('escape' => false)); ?></li>
-									<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;'.__('List Acessorios'), array('controller' => 'acessorios', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;'.__('New Acessorio'), array('controller' => 'acessorios', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;'.__('List Pesquisas'), array('controller' => 'pesquisas', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;'.__('New Pesquisa'), array('controller' => 'pesquisas', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;'.__('List Usuario Avaliacaos'), array('controller' => 'usuario_avaliacaos', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;'.__('New Usuario Avaliacao'), array('controller' => 'usuario_avaliacaos', 'action' => 'add'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;'.__('List Usuario Enderecos'), array('controller' => 'usuario_enderecos', 'action' => 'index'), array('escape' => false)); ?> </li>
-		<li><?php echo $this->Html->link('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;'.__('New Usuario Endereco'), array('controller' => 'usuario_enderecos', 'action' => 'add'), array('escape' => false)); ?> </li>
+								<li><?php echo $this->Html->link('<span class="fa fa-search"></span>&nbsp;&nbsp;'.__('Detalhes do Usuário'), array('action' => 'view', $this->Form->value('Usuario.id')), array('escape' => false)); ?> </li>
+								<li><?php echo $this->Html->link('<span class="fa fa-list"></span>&nbsp;&nbsp;'.__('Listar Usuários'), array('action' => 'index'), array('escape' => false)); ?></li>
 							</ul>
 						</div>
 					</div>
@@ -46,16 +43,7 @@
 					<?php echo $this->Form->input('email', array('class' => 'form-control', 'placeholder' => 'Email'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('senha', array('class' => 'form-control', 'placeholder' => 'Senha'));?>
-				</div>
-				<div class="form-group">
-					<?php echo $this->Form->input('ativo', array('class' => 'form-control', 'placeholder' => 'Ativo'));?>
-				</div>
-				<div class="form-group">
-					<?php echo $this->Form->input('bloqueado', array('class' => 'form-control', 'placeholder' => 'Bloqueado'));?>
-				</div>
-				<div class="form-group">
-					<?php echo $this->Form->input('data_nascimento', array('class' => 'form-control', 'placeholder' => 'Data Nascimento'));?>
+					<?php echo $this->Form->input('data_nascimento', array('class' => 'form-control', 'type' => 'text', 'placeholder' => 'Data Nascimento', 'id' => 'data_nasc'));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->input('telefone1', array('class' => 'form-control', 'placeholder' => 'Telefone1'));?>
@@ -76,7 +64,7 @@
 					<?php echo $this->Form->input('marca_veiculo', array('class' => 'form-control', 'placeholder' => 'Marca Veiculo'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('placa_veiculo', array('class' => 'form-control', 'placeholder' => 'Placa Veiculo'));?>
+					<?php echo $this->Form->input('placa_veiculo', array('class' => 'form-control', 'placeholder' => 'Placa Veiculo', 'id' => 'placa'));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->input('cor_veiculo', array('class' => 'form-control', 'placeholder' => 'Cor Veiculo'));?>
@@ -88,7 +76,7 @@
 					<?php echo $this->Form->input('data_inclusao_registro', array('class' => 'form-control', 'placeholder' => 'Data Inclusao Registro'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-default')); ?>
+					<?php echo $this->Form->submit(__('Salvar'), array('class' => 'btn btn-primary')); ?>
 				</div>
 
 			<?php echo $this->Form->end() ?>

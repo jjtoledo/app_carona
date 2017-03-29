@@ -53,7 +53,8 @@ class UsuariosController extends AppController {
 							'Pais'
 						)
 					)
-				)
+				),
+				'Acessorio'
 			),
 			'conditions' => array('Usuario.' . $this->Usuario->primaryKey => $id)
 		);
@@ -98,7 +99,9 @@ class UsuariosController extends AppController {
 			}
 		} else {
 			$options = array('conditions' => array('Usuario.' . $this->Usuario->primaryKey => $id));
-			$this->request->data = $this->Usuario->find('first', $options);
+			$usuario = $this->Usuario->find('first', $options);
+			$usuario['Usuario']['data_nascimento'] = date('d/m/Y', strtotime($usuario['Usuario']['data_nascimento']));
+			$this->request->data = $usuario;
 		}
 	}
 

@@ -15,9 +15,23 @@
 					<div class="panel-heading"><?php echo __('Ações'); ?></div>
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-									<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp&nbsp;Listar Usuários'), array('action' => 'index'), array('escape' => false)); ?> </li>
-									<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>&nbsp&nbsp;Editar Usuário'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
-									<li><?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Excluir Usuário'), array('action' => 'delete', $usuario['Usuario']['id']), array('escape' => false), __('Você realmente deseja excluir: %s?', $usuario['Usuario']['nome'])); ?> </li>
+									<li><?php echo $this->Html->link(__('<span class="fa fa-list"></span>&nbsp&nbsp;Listar Usuários'), array('action' => 'index'), array('escape' => false)); ?> </li>
+									<li><?php echo $this->Html->link(__('<span class="fa fa-pencil"></span>&nbsp&nbsp;Editar Usuário'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
+									<li><?php 
+										if($usuario['Usuario']['ativo'] == 1) {  
+											echo $this->Form->postLink(__('<span class="fa fa-remove"></span>&nbsp;&nbsp;Desativar Usuário'), array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Você realmente deseja desativar o usuário: %s?', $usuario['Usuario']['nome'])); 
+										} else {
+											echo $this->Form->postLink(__('<span class="fa fa-check"></span>&nbsp;&nbsp;Ativar Usuário'), array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Você realmente deseja ativar o usuário: %s?', $usuario['Usuario']['nome']));
+										} ?>
+									</li>
+
+									<li><?php 
+										if($usuario['Usuario']['bloqueado'] == 0) {
+											echo $this->Form->postLink(__('<span class="fa fa-lock"></span>&nbsp;&nbsp;Bloquear Usuário'), array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Você realmente deseja bloquear o usuário: %s?', $usuario['Usuario']['nome']));
+										} else {
+											echo $this->Form->postLink(__('<span class="fa fa-unlock"></span>&nbsp;&nbsp;Desbloquear Usuário'), array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Você realmente deseja desbloquear o usuário: %s?', $usuario['Usuario']['nome']));
+										} ?>
+									</li>
 							</ul>
 						</div><!-- end body -->
 				</div><!-- end panel -->
@@ -48,33 +62,37 @@
 
 		</div><!-- end col md 9 -->
 	</div>
-</div>
+</div><br>
 
 <div class="related row">
 	<div class="col-md-12">
-		<h3><?php echo __('Acessórios'); ?></h3>
-		<?php if (!empty($usuario['Acessorio'])): ?>
-			<table cellpadding = "0" cellspacing = "0" class="table table-striped">
-				<thead>
-					<tr>
-						<th><?php echo __('Nome'); ?></th>
-						<th class="actions"></th>
-					</tr>
-				<thead>
-				<tbody>
-					<?php foreach ($usuario['Acessorio'] as $acessorio): ?>
+
+		<?php if($usuario['Usuario']['motorista'] == 1) { ?>
+
+			<h3><?php echo __('Acessórios'); ?></h3>
+
+			<?php if (!empty($usuario['Acessorio'])): ?>
+
+				<table cellpadding = "0" cellspacing = "0" class="table table-striped">
+					<thead>
 						<tr>
-							<td><?php echo $acessorio['nome']; ?></td>
-							<td class="actions">
-								<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'acessorios', 'action' => 'view', $acessorio['id']), array('escape' => false)); ?>
-								<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'acessorios', 'action' => 'edit', $acessorio['id']), array('escape' => false)); ?>
-								<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'acessorios', 'action' => 'delete', $acessorio['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $acessorio['id'])); ?>
-							</td>
+							<th class="actions"></th>
 						</tr>
-					<?php endforeach; ?>
-				</tbody>
-			</table>
-		<?php endif; ?>
+					<thead>
+					<tbody>
+						<?php foreach ($usuario['Acessorio'] as $acessorio): ?>
+							<tr>
+								<td><?php echo $acessorio['nome']; ?></td>
+								<td class="actions">
+									<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'acessorios', 'action' => 'delete', $acessorio['id']), array('escape' => false), __('Tem certeza que deseja excluir este acessório?')); ?>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+			<?php endif; 
+		} ?>
+
 	</div><!-- end col md 12 -->
 </div>
 
