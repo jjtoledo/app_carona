@@ -60,19 +60,19 @@
 											 	echo 'Sim';
 											 } ?>&nbsp;</td>
 							<td class="actions">
-								<?php echo $this->Html->link('<span class="fa fa-search"></span>', array('action' => 'view', $usuario['Usuario']['id']), array('escape' => false)); ?>
+								<?php echo $this->Html->link('<span class="fa fa-search" title="Ver detalhes"></span>', array('action' => 'view', $usuario['Usuario']['id']), array('escape' => false)); ?>
 								<?php //echo $this->Html->link('<span class="fa fa-pencil"></span>', array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?>
 
 								<?php if($usuario['Usuario']['ativo'] == 1) { 
-										echo $this->Form->postLink('<span class="fa fa-remove"></span>', array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Tem certeza que deseja desativar o usuário: %s?', $usuario['Usuario']['nome'])); 
+										echo $this->Form->postLink('<span class="fa fa-remove" title="Desativar"></span>', array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Tem certeza que deseja desativar o usuário: %s?', $usuario['Usuario']['nome'])); 
 									  } else {
-									  	echo $this->Form->postLink('<span class="fa fa-check"></span>', array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Tem certeza que deseja ativar o usuário: %s?', $usuario['Usuario']['nome'])); 
+									  	echo $this->Form->postLink('<span class="fa fa-check" title="Ativar"></span>', array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Tem certeza que deseja ativar o usuário: %s?', $usuario['Usuario']['nome'])); 
 									  } ?>
 
 								<?php if($usuario['Usuario']['bloqueado'] == 0) { 
-										echo $this->Form->postLink('<span class="fa fa-lock"></span>', array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Tem certeza que deseja bloquear o usuário: %s?', $usuario['Usuario']['nome'])); 
+										echo $this->Form->postLink('<span class="fa fa-lock" title="Bloquear"></span>', array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Tem certeza que deseja bloquear o usuário: %s?', $usuario['Usuario']['nome'])); 
 									  } else {
-									  	echo $this->Form->postLink('<span class="fa fa-unlock"></span>', array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Tem certeza que deseja desbloquear o usuário: %s?', $usuario['Usuario']['nome']));
+									  	echo $this->Form->postLink('<span class="fa fa-unlock" title="Desbloquear"></span>', array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Tem certeza que deseja desbloquear o usuário: %s?', $usuario['Usuario']['nome']));
 									  } ?>
 							</td>
 						</tr>

@@ -15,23 +15,23 @@
 					<div class="panel-heading"><?php echo __('Ações'); ?></div>
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-									<li><?php echo $this->Html->link(__('<span class="fa fa-list"></span>&nbsp&nbsp;Listar Usuários'), array('action' => 'index'), array('escape' => false)); ?> </li>
-									<li><?php //echo $this->Html->link(__('<span class="fa fa-pencil"></span>&nbsp&nbsp;Editar Usuário'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
-									<li><?php 
-										if($usuario['Usuario']['ativo'] == 1) {  
-											echo $this->Form->postLink(__('<span class="fa fa-remove"></span>&nbsp;&nbsp;Desativar Usuário'), array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Você realmente deseja desativar o usuário: %s?', $usuario['Usuario']['nome'])); 
-										} else {
-											echo $this->Form->postLink(__('<span class="fa fa-check"></span>&nbsp;&nbsp;Ativar Usuário'), array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Você realmente deseja ativar o usuário: %s?', $usuario['Usuario']['nome']));
-										} ?>
-									</li>
+								<li><?php echo $this->Html->link(__('<span class="fa fa-list"></span>&nbsp&nbsp;Listar Usuários'), array('action' => 'index'), array('escape' => false)); ?> </li>
+								<li><?php //echo $this->Html->link(__('<span class="fa fa-pencil"></span>&nbsp&nbsp;Editar Usuário'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
+								<li><?php 
+									if($usuario['Usuario']['ativo'] == 1) {  
+										echo $this->Form->postLink(__('<span class="fa fa-remove"></span>&nbsp;&nbsp;Desativar Usuário'), array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Você realmente deseja desativar o usuário: %s?', $usuario['Usuario']['nome'])); 
+									} else {
+										echo $this->Form->postLink(__('<span class="fa fa-check"></span>&nbsp;&nbsp;Ativar Usuário'), array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Você realmente deseja ativar o usuário: %s?', $usuario['Usuario']['nome']));
+									} ?>
+								</li>
 
-									<li><?php 
-										if($usuario['Usuario']['bloqueado'] == 0) {
-											echo $this->Form->postLink(__('<span class="fa fa-lock"></span>&nbsp;&nbsp;Bloquear Usuário'), array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Você realmente deseja bloquear o usuário: %s?', $usuario['Usuario']['nome']));
-										} else {
-											echo $this->Form->postLink(__('<span class="fa fa-unlock"></span>&nbsp;&nbsp;Desbloquear Usuário'), array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Você realmente deseja desbloquear o usuário: %s?', $usuario['Usuario']['nome']));
-										} ?>
-									</li>
+								<li><?php 
+									if($usuario['Usuario']['bloqueado'] == 0) {
+										echo $this->Form->postLink(__('<span class="fa fa-lock"></span>&nbsp;&nbsp;Bloquear Usuário'), array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Você realmente deseja bloquear o usuário: %s?', $usuario['Usuario']['nome']));
+									} else {
+										echo $this->Form->postLink(__('<span class="fa fa-unlock"></span>&nbsp;&nbsp;Desbloquear Usuário'), array('action' => 'block', $usuario['Usuario']['id'], $usuario['Usuario']['bloqueado']), array('escape' => false), __('Você realmente deseja desbloquear o usuário: %s?', $usuario['Usuario']['nome']));
+									} ?>
+								</li>
 							</ul>
 						</div><!-- end body -->
 				</div><!-- end panel -->

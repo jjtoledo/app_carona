@@ -50,7 +50,7 @@
 									$users = count($c['CaronaUsuario']) - 1;
 									$result = $valor * $users; 
 
-									echo date('d/m/Y' , strtotime($c['Carona']['data_hora'])) . ' - <b>Saída:</b> ' . date('h:i' , strtotime($c['Carona']['data_hora'])) . 'h <div class="pull-right"><span class="fa fa-money"> $' . $result . '</span>&nbsp;&nbsp;<span class="badge">' . $status[$c['Carona']['status']] . '</span>&nbsp;&nbsp;</div><br><hr class="hr1">';
+									echo date('d/m/Y' , strtotime($c['Carona']['data_hora'])) . ' - <b>Saída:</b> ' . date('h:i' , strtotime($c['Carona']['data_hora'])) . 'h <div class="pull-right"><span class="fa fa-money"> <b>$' . $result . '</b></span>&nbsp;&nbsp;<span class="badge">' . $status[$c['Carona']['status']] . '</span>&nbsp;&nbsp;</div><br><hr class="hr1">';
 
 									echo '<span class="fa fa-map-marker"></span>&nbsp;&nbsp;' . 
 
@@ -105,11 +105,6 @@
 											echo ' - ' . $nota . '<br>';
 										}
 									}
-
-
-
-
-									
 
 								echo '</div>';
 

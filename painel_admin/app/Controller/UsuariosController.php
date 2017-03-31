@@ -126,16 +126,16 @@ class UsuariosController extends AppController {
 		if($ativo == 1) {
 			$this->Usuario->id = $id; 
 			if($this->Usuario->saveField('ativo', 0)) {
-				$this->Session->setFlash(__('O usuário foi desativado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('O usuário foi desativado com sucesso.'), 'success', array('class' => 'alert alert-success'));
 			}else {
-				$this->Session->setFlash(__('O usuário não foi desativado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash(__('O usuário não foi desativado. Por favor, tente novamente.'), 'erro', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$this->Usuario->id = $id; 
 			if($this->Usuario->saveField('ativo', 1)) {
-				$this->Session->setFlash(__('O usuário foi ativado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('O usuário foi ativado com sucesso.'), 'success', array('class' => 'alert alert-success'));
 			}else {
-				$this->Session->setFlash(__('O usuário não foi ativado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash(__('O usuário não foi ativado. Por favor, tente novamente.'), 'erro', array('class' => 'alert alert-danger'));
 			}
 		}
 		return $this->redirect($this->referer());
@@ -151,16 +151,16 @@ class UsuariosController extends AppController {
 		if($bloqueado == 1) {
 			$this->Usuario->id = $id; 
 			if($this->Usuario->saveField('bloqueado', 0)) {
-				$this->Session->setFlash(__('O usuário foi desbloqueado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('O usuário foi desbloqueado com sucesso.'), 'success', array('class' => 'alert alert-success'));
 			}else {
-				$this->Session->setFlash(__('O usuário não foi desbloqueado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash(__('O usuário não foi desbloqueado. Por favor, tente novamente.'), 'erro', array('class' => 'alert alert-danger'));
 			}
 		} else {
 			$this->Usuario->id = $id; 
 			if($this->Usuario->saveField('bloqueado', 1)) {
-				$this->Session->setFlash(__('O usuário foi bloqueado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+				$this->Session->setFlash(__('O usuário foi bloqueado com sucesso.'), 'success', array('class' => 'alert alert-success'));
 			}else {
-				$this->Session->setFlash(__('O usuário não foi bloqueado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+				$this->Session->setFlash(__('O usuário não foi bloqueado. Por favor, tente novamente.'), 'erro', array('class' => 'alert alert-danger'));
 			}
 		}
 
