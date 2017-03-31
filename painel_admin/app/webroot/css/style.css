@@ -36,35 +36,23 @@
 	Outros
 ------------------------ */
 
-.jumb {
-	padding-top: 20px;
-	padding-bottom: 20px;
+.p_inline {
+  display: inline;
 }
 
-.container-fluid .jumb {
-	padding-right: 40px;
-	padding-left: 40px;
+.carona1 {
+  padding: 3px;
 }
 
-.h3 {
-	margin-top: 0;
+.carona2 {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
 }
 
-.foto_view {
-	padding-top: 7px;
-}
-
-.img_view {
+.hr1 {
+  margin-top: 5px;
   margin-bottom: 5px;
-}
-
-.pad {
-	padding-left: 2px;
-	padding-right: 2px;
-}
-
-.esconde_rest {
-  display: none;
 }
 
 /* ------------------------

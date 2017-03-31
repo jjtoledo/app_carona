@@ -42,10 +42,14 @@ class UsuariosController extends AppController {
 		$options = array(
 			'contain' => array(
 				'AvaliacaoRealizada'=> array(
-					'UsuarioAvaliado'
+					'UsuarioAvaliado' => array(
+						'fields' => 'UsuarioAvaliado.nome'
+					)
 				),
 				'AvaliacaoRecebida' => array(
-					'UsuarioAvaliador'
+					'UsuarioAvaliador' => array(
+						'fields' => 'UsuarioAvaliador.nome'
+					)
 				),
 				'Endereco' => array(
 					'Cidade' => array(
@@ -112,17 +116,54 @@ class UsuariosController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
+	public function delete($id = null, $ativo = null) {
 		$this->Usuario->id = $id;
 		if (!$this->Usuario->exists()) {
 			throw new NotFoundException(__('Invalid usuario'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Usuario->delete()) {
-			$this->Session->setFlash(__('The usuario has been deleted.'), 'default', array('class' => 'alert alert-success'));
+
+		if($ativo == 1) {
+			$this->Usuario->id = $id; 
+			if($this->Usuario->saveField('ativo', 0)) {
+				$this->Session->setFlash(__('O usuário foi desativado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+			}else {
+				$this->Session->setFlash(__('O usuário não foi desativado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+			}
 		} else {
-			$this->Session->setFlash(__('The usuario could not be deleted. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+			$this->Usuario->id = $id; 
+			if($this->Usuario->saveField('ativo', 1)) {
+				$this->Session->setFlash(__('O usuário foi ativado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+			}else {
+				$this->Session->setFlash(__('O usuário não foi ativado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+			}
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect($this->referer());
+	}
+
+	public function block($id = null, $bloqueado = null) {
+		$this->Usuario->id = $id;
+		if (!$this->Usuario->exists()) {
+			throw new NotFoundException(__('Invalid usuario'));
+		}
+		$this->request->onlyAllow('post', 'delete');
+
+		if($bloqueado == 1) {
+			$this->Usuario->id = $id; 
+			if($this->Usuario->saveField('bloqueado', 0)) {
+				$this->Session->setFlash(__('O usuário foi desbloqueado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+			}else {
+				$this->Session->setFlash(__('O usuário não foi desbloqueado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+			}
+		} else {
+			$this->Usuario->id = $id; 
+			if($this->Usuario->saveField('bloqueado', 1)) {
+				$this->Session->setFlash(__('O usuário foi bloqueado com sucesso.'), 'default', array('class' => 'alert alert-success'));
+			}else {
+				$this->Session->setFlash(__('O usuário não foi bloqueado. Por favor, tente novamente.'), 'default', array('class' => 'alert alert-danger'));
+			}
+		}
+
+		return $this->redirect($this->referer());
 	}
 }

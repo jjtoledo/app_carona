@@ -23,8 +23,35 @@ class CaronasController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Carona->recursive = 0;
-		$this->set('caronas', $this->Paginator->paginate());
+
+		$status = array(
+			 		0 => 'Em andamento',
+			 		1 => 'Finalizada'
+				  );
+		$this->set(compact('status'));
+
+		$options = array(
+			'contain' => array(
+				'CaronaUsuario' => array(
+					'Usuario' => array(
+						'fields' => array('Usuario.id', 'Usuario.nome')
+					)
+				),
+				'EnderecoOrigem' => array(
+					'Cidade' => array(
+						'Estado'
+					)
+				),
+				'EnderecoDestino' => array(
+					'Cidade' => array(
+						'Estado'
+					)
+				),
+				'Avaliacao'
+			),
+			
+		);
+		$this->set('caronas', $this->Carona->find('all', $options));
 	}
 
 /**

@@ -16,7 +16,7 @@
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
 									<li><?php echo $this->Html->link(__('<span class="fa fa-list"></span>&nbsp&nbsp;Listar Usuários'), array('action' => 'index'), array('escape' => false)); ?> </li>
-									<li><?php echo $this->Html->link(__('<span class="fa fa-pencil"></span>&nbsp&nbsp;Editar Usuário'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
+									<li><?php //echo $this->Html->link(__('<span class="fa fa-pencil"></span>&nbsp&nbsp;Editar Usuário'), array('action' => 'edit', $usuario['Usuario']['id']), array('escape' => false)); ?> </li>
 									<li><?php 
 										if($usuario['Usuario']['ativo'] == 1) {  
 											echo $this->Form->postLink(__('<span class="fa fa-remove"></span>&nbsp;&nbsp;Desativar Usuário'), array('action' => 'delete', $usuario['Usuario']['id'], $usuario['Usuario']['ativo']), array('escape' => false), __('Você realmente deseja desativar o usuário: %s?', $usuario['Usuario']['nome'])); 

@@ -30,51 +30,52 @@
 					</div>
 				</div>			
 		</div><!-- end col md 3 -->
+
+		
 		<div class="col-md-9">
 			<?php echo $this->Form->create('Usuario', array('role' => 'form')); ?>
 
 				<div class="form-group">
 					<?php echo $this->Form->input('id', array('class' => 'form-control', 'placeholder' => 'Id'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-6 pad form-group">
 					<?php echo $this->Form->input('nome', array('class' => 'form-control', 'placeholder' => 'Nome'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-6 pad form-group">
 					<?php echo $this->Form->input('email', array('class' => 'form-control', 'placeholder' => 'Email'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('data_nascimento', array('class' => 'form-control', 'type' => 'text', 'placeholder' => 'Data Nascimento', 'id' => 'data_nasc'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('telefone1', array('class' => 'form-control', 'placeholder' => 'Telefone1'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('telefone2', array('class' => 'form-control', 'placeholder' => 'Telefone2'));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->input('foto', array('class' => 'form-control', 'placeholder' => 'Foto'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('cpf', array('class' => 'form-control', 'placeholder' => 'Cpf'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('num_carteira_motorista', array('class' => 'form-control', 'placeholder' => 'Num Carteira Motorista'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('marca_veiculo', array('class' => 'form-control', 'placeholder' => 'Marca Veiculo'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('placa_veiculo', array('class' => 'form-control', 'placeholder' => 'Placa Veiculo', 'id' => 'placa'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('cor_veiculo', array('class' => 'form-control', 'placeholder' => 'Cor Veiculo'));?>
 				</div>
-				<div class="form-group">
+				<div class="col-md-4 pad form-group">
 					<?php echo $this->Form->input('modelo_veiculo', array('class' => 'form-control', 'placeholder' => 'Modelo Veiculo'));?>
 				</div>
-				<div class="form-group">
-					<?php echo $this->Form->input('data_inclusao_registro', array('class' => 'form-control', 'placeholder' => 'Data Inclusao Registro'));?>
-				</div>
+
+
 				<div class="form-group">
 					<?php echo $this->Form->submit(__('Salvar'), array('class' => 'btn btn-primary')); ?>
 				</div>

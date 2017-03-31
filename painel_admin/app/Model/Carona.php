@@ -28,7 +28,36 @@ class Carona extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
+		),
+		'Avaliacao' => array(
+			'className' => 'Avaliacao',
+			'foreignKey' => 'carona_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 
+	public $belongsTo = array(
+		'EnderecoOrigem' => array(
+			'className' => 'Endereco',
+			'foreignKey' => 'origem_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'EnderecoDestino' => array(
+			'className' => 'Endereco',
+			'foreignKey' => 'destino_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 }
