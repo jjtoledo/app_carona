@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Cadastro } from '../cadastro/cadastro';
 
 /**
  * Generated class for the Login page.
@@ -19,6 +20,10 @@ export class Login {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
+  }
+
+  goToCadastro() {     
+  	this.navCtrl.push(Cadastro);   
   }
 
 }
