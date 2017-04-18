@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
 */
+
 @Injectable()
 export class AutenticationService {
 
@@ -15,16 +16,17 @@ export class AutenticationService {
   public api_url: string;
  
   constructor(public http: Http) {
-    this.api_url = 'http://localhost/app_carona/webservice/';
+   this.api_url = 'http://localhost:8282/dedao/app_carona/webservice/';
   }
  
  
   // Insere usuário
-  add(usuario) {
-    return new Promise(resolve =&gt; {
-      this.http.post(this.api_url + 'usuarios/add', {'user': {'usuario': usuario}})
-        .map(res =&gt; res.json())
-        .subscribe(data =&gt; {
+  add(nome, email, senha) {
+
+    return new Promise(resolve => {
+      this.http.post(this.api_url + 'usuarios/add', {'Usuario': {'nome': nome, 'email': email, 'senha': senha}})
+        .map(res => res.json())
+        .subscribe(data => {
           this.data = data.results;
           resolve(this.data);
         });
