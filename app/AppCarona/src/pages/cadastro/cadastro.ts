@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+
 import { Http } from '@angular/http';
+
+import 'rxjs/add/operator/map';
 
 /**
  * Generated class for the Cadastro page.
@@ -34,14 +37,11 @@ export class Cadastro {
 
   usuario_add() {
 
-    return new Promise(resolve => {
-      this.http.post(this.api_url + 'usuarios/add', {'Usuario': {'nome': this.nome, 'email': this.email, 'senha': this.senha}})
+      this.http.post(this.api_url + 'usuarios/add', {'nome': this.nome, 'email': this.email, 'senha': this.senha})
         .map(res => res.json())
         .subscribe(data => {
-          this.data = data.results;
-         resolve(this.data);
-        });
-    });
+          console.log(data.message);
+      });
   
 
     /*let toast = this.toastCtrl.create({
