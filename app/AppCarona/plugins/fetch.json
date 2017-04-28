@@ -54,7 +54,18 @@
         },
         "is_top_level": true,
         "variables": {
-            "REVERSED_CLIENT_ID": "myreversedclientid"
+            "REVERSED_CLIENT_ID": "com.applicati.carona"
+        }
+    },
+    "cordova-plugin-facebook4": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-facebook4"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "1321452724610913",
+            "APP_NAME": "AppCarona"
         }
     }
 }

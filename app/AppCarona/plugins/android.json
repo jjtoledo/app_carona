@@ -1,0 +1,38 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.applicati.carona"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.applicati.carona"
+        },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "1321452724610913",
+            "APP_NAME": "AppCarona",
+            "PACKAGE_NAME": "com.applicati.carona"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.applicati.carona"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.applicati.carona"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.applicati.carona"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.applicati.carona"
+        },
+        "cordova-plugin-googleplus": {
+            "PACKAGE_NAME": "com.applicati.carona"
+        }
+    },
+    "dependent_plugins": {}
+}

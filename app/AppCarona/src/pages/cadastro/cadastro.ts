@@ -36,12 +36,11 @@ export class Cadastro {
   }
 
   usuario_add() {
-
-      this.http.post(this.api_url + 'usuarios/add', {'nome': this.nome, 'email': this.email, 'senha': this.senha})
-        .map(res => res.json())
-        .subscribe(data => {
-          console.log(data.message);
-      });
+    this.http.post(this.api_url + 'usuarios/add', {'Usuario': {'nome': this.nome, 'email': this.email, 'senha': this.senha}})
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data.message);
+    });
   
 
     /*let toast = this.toastCtrl.create({
