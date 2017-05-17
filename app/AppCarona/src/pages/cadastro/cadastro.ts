@@ -28,7 +28,7 @@ export class Cadastro {
   senha: string = '';
 
   constructor(private toastCtrl: ToastController, public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    this.api_url = 'http://localhost:8282/dedao/app_carona/webservice/';
+    this.api_url = 'http://localhost/app_carona/webservice/';
   }
 
   ionViewDidLoad() {
